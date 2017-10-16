@@ -1,0 +1,57 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<head>
+  <style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+</style>
+  </head>
+  <body>
+
+    
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <h3 style="color:grey;text-align: left;">Selected Employee</h3>
+  <table>
+      <tr>
+        <td>{{childRecord.selectedename}}</td>
+        <td>{{childRecord.selecteddept}}</td>
+        <td>{{childRecord.selectedjob}}</td>
+        <td>{{childRecord.selectedsal}}</td>
+      </tr>
+  </table>
+  <h3 style="color:grey;text-align: left;">Employee List</h3>
+</div>
+
+<table>
+  <tr>
+  <th> Name</th>
+  <th> Dept</th>
+  <th>Job</th>
+  <th>Salary</th>
+</tr>
+</table>
+<emp-list 
+[ename] ="emp.ename"
+[dept] ="emp.dept"
+[job] ="emp.job"
+[sal] ="emp.sal"
+(sendChildRecord)="getChildRecord($event)"
+*ngFor= "let emp of empRecords"> Employee Details displayed here</emp-list>
+
+<button (click)="sendMsgToChild()" >Send Messege to child</button>
+<br/>
+<br/>
+<!--Name:<input [value]= 'name' (input)='name=$event.target.value' /> --> 
+Name:<input [(ngModel)]='name'/>
+<br/>
+You entered: {{name}}
+</body>
+
